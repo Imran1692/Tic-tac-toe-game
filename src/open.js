@@ -38,8 +38,8 @@ contain.forEach((boxes) => {
 });
 
 const showWinner = (Winner) => {
-    msg.innerText = `Congratulations,Winner is ${Winner}`;
-    win.classList.remove("hidden");
+    msgBtn.innerText = `Congratulations,Winner is ${Winner}`;
+    winSelect.classList.remove("hidden");
 };
 const checkWinner = () => {
     for (let pattern of winPatterns) {
