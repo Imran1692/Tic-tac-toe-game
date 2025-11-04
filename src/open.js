@@ -25,11 +25,11 @@ contain.forEach((boxes) => {
         //boxes.innerText="0";
 
         if (ternO) {
-            boxes.innerText = "0";
+            boxes.innerText = "X";
             ternO = false;
         }
         else {
-            boxes.innerText = "1";
+            boxes.innerText = "O";
             ternO = true;
         }
         boxes.disabled = true;
@@ -37,9 +37,30 @@ contain.forEach((boxes) => {
     });
 });
 
+const resetGame = () => {
+    ternO = true;
+    enableBoxes();
+    winSelect.classList.add("hidden");
+};
+
+
+const enableBoxes = () => {
+    for(let box of contain)
+    {
+        box.disabled = false; 
+        box.innerText = "";
+    }
+};
+
+const disabledBoxes = () => {
+    for(let box of contain)
+    box.disabled = true;
+}
+
 const showWinner = (Winner) => {
     msgBtn.innerText = `Congratulations,Winner is ${Winner}`;
     winSelect.classList.remove("hidden");
+    disabledBoxes();
 };
 const checkWinner = () => {
     for (let pattern of winPatterns) {
@@ -54,5 +75,13 @@ const checkWinner = () => {
             }
         }
     }
+
+     if ([...contain].every(box => box.innerText !== "")) {
+        msgBtn.innerText = "It's a Draw!";
+        winSelect.classList.remove("hidden");
+    }
 };
+
+resetBtn.addEventListener("click",resetGame);
+gameBtn.addEventListener("click",resetGame);
 
