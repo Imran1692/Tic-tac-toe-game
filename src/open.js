@@ -26,10 +26,14 @@ contain.forEach((boxes) => {
 
         if (ternO) {
             boxes.innerText = "X";
+            boxes.style.background = "#3E3F29";
+            boxes.style.color = "#BCA88D";
             ternO = false;
         }
         else {
             boxes.innerText = "O";
+            boxes.style.background = "#A18D6D";
+            boxes.style.color = "#703B3B";
             ternO = true;
         }
         boxes.disabled = true;
@@ -49,6 +53,7 @@ const enableBoxes = () => {
     {
         box.disabled = false; 
         box.innerText = "";
+        box.style.background = "";
     }
 };
 
@@ -70,7 +75,7 @@ const checkWinner = () => {
 
         if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
             if (pos1Val === pos2Val && pos2Val === pos3Val) {
-                console.log("Winner", pos1Val);
+                // console.log("Winner", pos1Val);
                 showWinner(pos1Val);
             }
         }
